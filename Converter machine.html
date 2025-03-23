@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter Machine</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ede7f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        #area_central {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        button {
+            background-color: #673ab7;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        button:hover {
+            background-color: #512da8;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #div_centro {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div id="area_central">
+
+            <h1>Converter Machine</h1>
+            <p>Escolha o conversor:</p>
+            <button onclick="conversorDecimal()">Decimal</button>
+            <button onclick="conversorBinario()">Binário</button>
+            <button onclick="conversorOctal()">Octal</button>
+            <button onclick="conversorHexadecimal()">Hexadecimal</button>
+            <br><br>
+            <button onclick="calculadora()">Calculadora (Decimal)</button>
+            <div id="div_centro"></div>
+        </div>
+    </center>
+</body>
+
+</html>
+<script>
+
+    function conversorDecimal() {
+
+
+        div_centro.innerHTML = `
+                <h3>Digite um número decimal:</h3>
+                <input id="deci1" type="number" placeholder="Ex: 42">
+                <br><br>
+
+                <button onclick="converterDecimal()">Converter</button>
+
+                <h3>Resultados:</h3>
+                <p>Octal:
+                <div id="deci2"></div>
+                </p>
+                <p>Hexadecimal:
+                <div id="deci3"></div>
+                </p>
+                <p>Binário:
+                <div id="deci4"></div>
+                </p>`;
+
+    }
+
+    function conversorBinario() {
+
+        div_centro.innerHTML = `
+                <h3>Digite um número binário:</h3>
+                <input id="bin1" type="text" placeholder="Ex: 1010">
+                <br><br>
+
+                <button onclick="converterBinario()">Converter</button>
+
+                <h3>Resultados:</h3>
+                <p>Decimal:
+                <div id="bin2"></div>
+                </p>
+                <p>Octal:
+                <div id="bin3"></div>
+                </p>
+                <p>Hexadecimal:
+                <div id="bin4"></div>
+                </p>`;
+
+    }
+
+    function conversorOctal() {
+
+        div_centro.innerHTML = `
+            <h3>Digite um número octal:</h3>
+            <input id="oc1" type="text" placeholder="Ex: 72">
+            <br><br>
+
+            <button onclick="converterOctal()">Converter</button>
+
+            <h3>Resultados:</h3>
+            <p>Decimal:
+            <div id="oc2"></div>
+            </p>
+            <p>Hexadecimal:
+            <div id="oc3"></div>
+            </p>
+            <p>Binário:
+            <div id="oc4"></div>
+            </p>`;
+
+    }
+
+    function conversorHexadecimal() {
+
+        div_centro.innerHTML = `
+            <h3>Digite um número hexadecimal:</h3>
+            <input id="hex1" type="text" placeholder="Ex: F1">
+            <br><br>
+
+            <button onclick="converterHexadecimal()">Converter</button>
+
+            <h3>Resultados:</h3>
+            <p>Decimal:
+            <div id="hex2"></div>
+            </p>
+            <p>Octal:
+            <div id="hex3"></div>
+            </p>
+            <p>Binário:
+            <div id="hex4"></div>
+            </p>`;
+
+    }
+
+    // Convertendo um número decimal para outras bases
+
+    function converterDecimal() {
+        var decimal = Number(deci1.value);
+
+        deci2.innerHTML = decimal.toString(8);
+        deci3.innerHTML = decimal.toString(16);
+        deci4.innerHTML = decimal.toString(2);
+    }
+
+    // Convertendo um número binário para outras bases
+
+    function converterBinario() {
+
+        var binario = bin1.value;
+
+        if (parseInt(binario, 2)) {
+
+            bin2.innerHTML = parseInt(binario, 2);
+            bin3.innerHTML = parseInt(binario, 2).toString(8);
+            bin4.innerHTML = parseInt(binario, 2).toString(16).toUpperCase();
+
+        } else {
+
+            alert("Insira um número binário válido (apenas 0 e 1)");
+
+        }
+
+    }
+
+    // Convertendo um número octal para outras bases
+
+    function converterOctal() {
+
+        var octal = oc1.value;
+
+        if (parseInt(octal, 8)) {
+
+            oc2.innerHTML = parseInt(octal, 8);
+            oc3.innerHTML = parseInt(octal, 8).toString(16).toUpperCase();
+            oc4.innerHTML = parseInt(octal, 8).toString(2);
+
+        } else {
+
+            alert("Insira um número octal válido (apenas 0 a 7)");
+
+        }
+
+    }
+
+    // Convertendo um número hexadecimal para outras bases
+
+    function converterHexadecimal() {
+
+        var hexa = hex1.value;
+
+        if (parseInt(hexa, 16)) {
+
+            hex2.innerHTML = parseInt(hexa, 16);
+            hex3.innerHTML = parseInt(hexa, 16).toString(8);
+            hex4.innerHTML = parseInt(hexa, 16).toString(2);
+
+        } else {
+
+            alert("Insira um número hexadecimal válido (apenas 0 a F)");
+
+        }
+
+    }
+
+    // Calculadora
+
+    function calculadora() {
+
+        div_centro.innerHTML = `
+            <h3>Calculadora</h3>
+            <p>Insira o primeiro número:</p>
+            <input type="number" id="ipt_numero1">
+            <p>Insira o segundo número:</p>
+            <input type="number" id="ipt_numero2">
+            <br><br>
+            <button onclick="soma()">Soma</button>
+            <button onclick="subtracao()">Subtação</button>
+            <button onclick="multiplicacao()">Multiplicação</button>
+            <button onclick="divisao()">Divisão</button>
+            <div id="div_calculadora"></div>`;
+
+    }
+
+    function soma() {
+
+        var numero1 = Number(ipt_numero1.value);
+        var numero2 = Number(ipt_numero2.value);
+        var calculo = numero1 + numero2
+
+        div_calculadora.innerHTML = `O resultado da conta de ${numero1} + ${numero2} é ${calculo}`;
+
+    }
+
+    function subtracao() {
+
+        var numero1 = Number(ipt_numero1.value);
+        var numero2 = Number(ipt_numero2.value);
+        var calculo = numero1 - numero2
+
+        div_calculadora.innerHTML = `O resultado da conta de ${numero1} - ${numero2} é ${calculo}`;
+
+    }
+
+    function multiplicacao() {
+
+        var numero1 = Number(ipt_numero1.value);
+        var numero2 = Number(ipt_numero2.value);
+        var calculo = numero1 * numero2
+
+        div_calculadora.innerHTML = `O resultado da conta de ${numero1} x ${numero2} é ${calculo}`;
+
+    }
+
+    function divisao() {
+
+        var numero1 = Number(ipt_numero1.value);
+        var numero2 = Number(ipt_numero2.value);
+        var calculo = numero1 / numero2
+
+        div_calculadora.innerHTML = `O resultado da conta de ${numero1} / ${numero2} é ${calculo}`;
+
+    }
+
+</script>
